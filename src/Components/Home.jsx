@@ -3,8 +3,12 @@ import React from 'react'
 import Leftside from './Leftside';
 import Main from './Main';
 import Rightside from './Rightside';
-
-function Home() {
+import { Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+function Home(props) {
+  if(!props.user){
+    return <Navigate to='/' replace />;
+  }
   return (
     <Container>
       <Section>
@@ -77,4 +81,10 @@ const Layout=styled.div`
   }
   `;
 
-export default Home
+  const mapStateToProps=(state) =>{
+    return{
+      user: state.userState.user,
+    }
+  }
+
+export default connect(mapStateToProps)(Home);

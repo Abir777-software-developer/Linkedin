@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import React from 'react'
-
-function Header() {
+import { connect } from 'react-redux';
+import { signoutAPI } from '../Actions/Index';
+import { signOut } from 'firebase/auth';
+function Header(props) {
   return (
     <Container>
         <Content>
@@ -52,12 +54,19 @@ function Header() {
                     </Navlist>
 
                     <User>
+
                         <a>
-                            <img src='/images/user.svg' alt='' />
-                            <span>Me</span>
+                            
+                            {props.user && props.user.photoURL ? 
+                            (<img src={props.user.photoURL} alt='' />
+                            ):(
+                            <img src='/images/user.svg' alt='' />)}
+                            <span>
+                                Me
                             <img src='/images/down-icon.svg' alt='' />
+                            </span>
                         </a>
-                        <SignOut>
+                        <SignOut onClick={() => props.signOut()}>
                             <a>
                                 Sign out
                             </a>
@@ -243,5 +252,12 @@ const Work=styled(User)`
     border-left:1px solid rgba(0,0,0,0.08);
 `;// same e as above
 
-
-export default Header
+const mapStateToProps =(state) =>{
+    return{
+        user:state.userState.user,
+    }
+}
+const mapDispatchToProps =(dispatch) =>({
+    signOut: () =>dispatch(signoutAPI()),
+});
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
