@@ -10,19 +10,16 @@ Mobile Responsiveness: Fully optimized for different screen sizes, ensuring a gr
 Backend
 Appwrite: A backend-as-a-service for managing authentication, database, and media storage.
 Functionalities
-Sign In & Sign Out:
 
-Google Sign-In integration.
-Secure session handling.
-Post Creation:
-
-Users can post text, images, and videos.
-Media files are uploaded and stored using Appwrite.
-Interactive Feed:
-
-Displays posts made by users.
-Posts include images, videos, and text, mimicking LinkedIn's style.
-User Interface:
+User Authentication: Secure sign-up and login functionality using Google OAuth via Appwrite.
+Post Creation: Allows users to create and share posts, including text, images, and videos.
+Real-Time Feed: Dynamically displays posts in chronological order using Appwrite's database and storage.
+Responsive Design: Optimized for desktop and mobile devices using Styled Components.
+State Management: Efficient state handling with Redux to manage users, posts, and application state.
+Appwrite Integration:
+Authentication: Powered by Appwrite's account services.
+Database: Posts and user data are stored and managed in Appwrite's database.
+Storage: Uploaded images and videos are securely handled using Appwrite's storage service.
 
 Styled like LinkedIn for familiarity.
 Includes interactive buttons for actions such as like, comment, share, and save.
